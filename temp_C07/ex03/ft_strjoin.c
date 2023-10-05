@@ -6,7 +6,7 @@
 /*   By: volivier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 15:54:27 by volivier          #+#    #+#             */
-/*   Updated: 2023/10/05 19:50:53 by volivier         ###   ########.fr       */
+/*   Updated: 2023/10/05 20:01:36 by volivier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	ft_len(char **strs, int size)
 	return(total);
 }
 
-char	*ft_fill(int size, int k, char *sep, char *ret, char **strs)
+char	*ft_fill(int size, int *k, char *sep, char *ret, char **strs)
 {
 	int i; 
 	int j;
@@ -54,17 +54,17 @@ char	*ft_fill(int size, int k, char *sep, char *ret, char **strs)
 		i = 0;
 		while (strs[j][i] != '\0')
 		{
-			ret[k] = strs[j][i];
+			ret[*k] = strs[j][i];
 			i++;
-			k++;
+			*k += 1;
 		}
 		j++;
 		i = 0;
 		while (sep[i] != '\0' && j != (size))
 		{
-			ret[k] = sep[i];
+			ret[*k] = sep[i];
 			i++;
-			k++;
+			*k += 1;
 		}
 	}
 	return (ret);
@@ -89,7 +89,7 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	i = 0;
 	k = 0;
 	j = 0;
-	ft_fill(size, i, sep, ret, strs);
+	ft_fill(size, &k, sep, ret, strs);
 	ret[k] = '\0';
 	return (ret);
 }
@@ -98,13 +98,6 @@ int	main()
 {
 	char	*strs[3] = {"hello","good","hi"};
 	char	sep[] = ",,,";
-	int i = 0;
-	int size = 3;
-
-	while (i < size)
-	{
-		printf("%s\n", ft_strjoin(3, strs, sep));
-		i++;
-	}	
+	printf("%s\n", ft_strjoin(3, strs, sep));
 	return (0);
 }
