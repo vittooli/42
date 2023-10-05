@@ -1,43 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_range.c                                         :+:      :+:    :+:   */
+/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: volivier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/05 15:20:21 by volivier          #+#    #+#             */
-/*   Updated: 2023/10/05 15:22:17 by volivier         ###   ########.fr       */
+/*   Created: 2023/10/04 16:47:29 by volivier          #+#    #+#             */
+/*   Updated: 2023/10/04 17:32:56 by volivier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
-#include <stdlib.h>
 
-int	*ft_range(int min, int max)
+int	ft_base(char *base)
 {
-	int	*arr;
 	int	i;
 	int	j;
 
-	arr = (int *)malloc((max - min) * sizeof(int));
 	i = 0;
-	j = min;
-	while (i < (max - min))
-	{
-		arr[i] = j;
-		j++;
+	j = i + 1;
+	while (base[i])
+	{	
+		while (base[j])
+		{
+			if (base[i] == base[j])
+				return(0);
+			else
+				j++;
+		}
 		i++;
 	}
-	return (arr);
+	if (i < 2)
+		return (0);
+	return (1);
 }
 
-/*int	main()
-{	
-	int *arr = ft_range(-100, 100);
-	int i = 0;
-	while(i < 200)
-	{
-		printf("%d, ", arr[i]);
-		i++;
-	}
+void	ft_putnbr_base(int nbr, char *base)
+{
+	int	ret;
+
+	ret = 0;
+	if (!ft_base)
+		return(0);
+	if 
+	ret = ret + (ft_putnbr_base(nbr / 10)
+}
+
+int	main(int argc, char **argv)
+{
+	if (argc == 2)
+		printf("%d", ft_base(argv[1]));
 	return (0);
-}*/
+}

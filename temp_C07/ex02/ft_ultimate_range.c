@@ -1,43 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_range.c                                         :+:      :+:    :+:   */
+/*   ft_ultimate_range.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: volivier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/05 15:20:21 by volivier          #+#    #+#             */
-/*   Updated: 2023/10/05 15:22:17 by volivier         ###   ########.fr       */
+/*   Created: 2023/10/05 14:06:32 by volivier          #+#    #+#             */
+/*   Updated: 2023/10/05 15:19:49 by volivier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
 
-int	*ft_range(int min, int max)
+int	ft_ultimate_range(int **range, int min, int max)
 {
-	int	*arr;
 	int	i;
-	int	j;
+	int	*arr;
 
+	if (min >= max)
+		return (0);
 	arr = (int *)malloc((max - min) * sizeof(int));
+	if (arr == 0)
+		return (-1);
 	i = 0;
-	j = min;
-	while (i < (max - min))
+	while (min < max)
 	{
-		arr[i] = j;
-		j++;
+		arr[i] = min;
+		min++;
 		i++;
 	}
-	return (arr);
+	*range = arr;
+	return (i);
 }
 
 /*int	main()
-{	
-	int *arr = ft_range(-100, 100);
-	int i = 0;
-	while(i < 200)
-	{
-		printf("%d, ", arr[i]);
-		i++;
-	}
-	return (0);
+{
+	int	*arr = NULL;
+	printf("%d", ft_ultimate_range(&arr, 0, -9));
 }*/
