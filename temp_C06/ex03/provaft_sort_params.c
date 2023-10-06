@@ -6,44 +6,45 @@
 /*   By: volivier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 18:37:30 by volivier          #+#    #+#             */
-/*   Updated: 2023/10/06 20:58:42 by volivier         ###   ########.fr       */
+/*   Updated: 2023/10/03 19:05:32 by volivier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-int	ft_strcmp(char *s1, char *s2)
+
+
+int	ft_strcmp(char *argv[i], char *argv[i + 1])
 {
 	int		i;
 
 	i = 0;
-	while (s1[i] == s2[i] && (s1[i] != '\0' || s2[i] != '\0'))
-	{
-		i++;
-	}
-	return (s1[i] - s2[i]);
+	while (argv[j] == argv[j] && (argv[j] != '\0' || argv[j] != '\0'))
+		j++;
+	return (argv[j] - argv[j]);
 }
+
 
 int	main(int argc, char **argv)
 {
 	int	i;
-	int	j;
-	char temp;
-	int	min;
+	int j;
 	
-	i = 1;
+	i = 0;
+	j = 0;
 	while(i < argc)
 	{
-		min = 1;
-		j = i + 1;
-		while (j < argc)
+		if (str_cmp(argv[i][j], argv[i + 1][j]) > 0)
 		{
-			if (argv[j] < argv[min])
-				min = j;
-			j++;
+			temp = argv[i + 1];
+			argv[i + 1] = argv[i];
+			argv[i] = temp;
 		}
-		temp = argv[i];
-		argv[i] = argv[min];
-		argv[min] = temp;
+	}
+	i = 0;
+	while (i < argc)
+	{
+		j = 0;
+		write(1, &argv[i][j++], 1);
 		i++;
 	}
 	return (0);
