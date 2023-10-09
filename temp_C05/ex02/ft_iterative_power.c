@@ -14,27 +14,20 @@
 
 int	ft_iterative_power(int nb, int power)
 {
-	if (power < 0)
-		return (0);
 	int	ret;
 
 	ret = 1;
+	if (power < 0)
+		return (0);
 	if (power == 0)
 		return (ret);
-	if (nb > 0)
-	{
-		while (power--)
-			ret = ret * nb;
-	}
-	else
-	{
-		while (power--)
-		{
-			if (power % 2 == 0)
-				ret = (ret* nb);
-			else
-				ret = ret * nb;
-		}
-	}
+	while (power--)
+		ret = ret * nb;
 	return (ret);
 }
+
+/*int main(int argc, char **argv)
+{
+	if(argc == 3)
+		printf("%d", ft_iterative_power(atoi(argv[1]), atoi(argv[2])));
+}*/

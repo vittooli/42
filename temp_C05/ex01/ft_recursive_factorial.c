@@ -6,7 +6,7 @@
 /*   By: volivier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 18:55:56 by volivier          #+#    #+#             */
-/*   Updated: 2023/10/02 20:14:48 by volivier         ###   ########.fr       */
+/*   Updated: 2023/10/09 14:06:59 by volivier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stdio.h>
@@ -14,17 +14,15 @@
 
 int	ft_recursive_factorial(int nb)
 {
-	int	ret;
-	int	i;
-	
-	ret = 1;
-	i = 0;
 	if (nb < 0)
 		return (0);
-	while (i < nb)
-	{
-		ret = nb * ft_recursive_factorial(nb - 1);
-		i++;
-	}
-	return(ret);
+	if (nb == 0 || nb == 1)
+		return (1);
+	return (nb * ft_recursive_factorial(nb - 1));
 }
+
+/*int main(int argc, char **argv)
+{
+	if(argc == 2)
+		printf("%d", ft_recursive_factorial(atoi(argv[1])));
+}*/
